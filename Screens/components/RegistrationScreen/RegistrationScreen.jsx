@@ -25,8 +25,6 @@ const initialState = {
 
 const RegistrationForm = () => {
   const { height, width } = useWindowDimensions();
-  console.log("height", height);
-  console.log("width", width);
   const portrait = height > width;
 
   const [hidePassword, setHidePassword] = useState(true);
