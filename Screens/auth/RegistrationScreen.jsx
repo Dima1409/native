@@ -23,7 +23,7 @@ const initialState = {
   password: "",
 };
 
-const RegistrationForm = () => {
+const RegistrationScreen = ({ navigation }) => {
   const { height, width } = useWindowDimensions();
   const portrait = height > width;
 
@@ -54,7 +54,7 @@ const RegistrationForm = () => {
       <View style={styles.container}>
         <ImageBackground
           style={styles.imageBg}
-          source={require("../../../image/photo.jpg")}
+          source={require("../../image/photo.jpg")}
         >
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -173,7 +173,15 @@ const RegistrationForm = () => {
                     <Text style={styles.btnText}>Зарегистрироваться</Text>
                   </TouchableOpacity>
                   {isShowKeyboard === false ? (
-                    <Text style={styles.account}>Уже есть аккаунт? Войти</Text>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("Login")}
+                    >
+                      <Text style={{ ...styles.account, color: "#212121", textDecorationLine: "none" }}>
+                        Уже есть аккаунт?
+                        <Text>  </Text>
+                        <Text style={styles.account}>Войти</Text>
+                      </Text>
+                    </TouchableOpacity>
                   ) : null}
                 </View>
               </>
@@ -291,7 +299,15 @@ const RegistrationForm = () => {
                     <Text style={styles.btnText}>Зарегистрироваться</Text>
                   </TouchableOpacity>
                   {isShowKeyboard === false ? (
-                    <Text style={styles.account}>Уже есть аккаунт? Войти</Text>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("Login")}
+                    >
+                      <Text style={{ ...styles.account, color: "#212121", textDecorationLine: "none" }}>
+                        Уже есть аккаунт?
+                        <Text>  </Text>
+                        <Text style={styles.account}>Войти</Text>
+                      </Text>
+                    </TouchableOpacity>
                   ) : null}
                 </View>
               </ScrollView>
@@ -342,7 +358,6 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Bold",
     marginBottom: 22,
     paddingTop: 80,
-    fontWeight: 500,
     lineHeight: 35,
     textAlign: "center",
     color: "#212121",
@@ -392,7 +407,8 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     textAlign: "center",
     marginBottom: 20,
+    textDecorationLine: "underline"
   },
 });
 
-export default RegistrationForm;
+export default RegistrationScreen;

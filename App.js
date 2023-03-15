@@ -1,8 +1,8 @@
 import React from "react";
-import RegistrationForm from "./Screens/components/RegistrationScreen";
-import LoginScreen from "./Screens/components/LoginScreen";
+import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { StyleSheet, View } from "react-native";
+
+import useRoute from "./router";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -10,22 +10,12 @@ export default function App() {
     "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
     "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
   });
+  const routing = useRoute(true);
 
   if (!fontsLoaded) {
     return null;
   }
 
-  return (
-    <View style={styles.container}>
-      <RegistrationForm />
-      {/* <LoginScreen/> */}
-    </View>
-  );
+  return <NavigationContainer>{routing}</NavigationContainer>;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-});
