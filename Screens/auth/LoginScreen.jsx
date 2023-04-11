@@ -264,8 +264,9 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 30,
+    fontFamily: "Roboto-Bold",
     marginBottom: 22,
-    marginTop: 80,
+    paddingTop: 80,
     lineHeight: 35,
     textAlign: "center",
     color: "#212121",
